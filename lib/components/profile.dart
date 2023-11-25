@@ -3,15 +3,37 @@ import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
 
 class Profile extends StatefulWidget {
+  final String statusText;
+  final String imagePath;
+
+  Profile({required this.statusText, required this.imagePath});
+
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
+  bool isEditing = false;
+  late TextEditingController textController;
+
+  @override
+  void initState() {
+    super.initState();
+    textController = TextEditingController(text: widget.statusText);
+
+    textController.addListener(() {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        setState(() {
+          isEditing = true;
+        });
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -29,23 +51,24 @@ class _ProfileState extends State<Profile> {
                   borderRadius: BorderRadius.circular(20.0),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.25), // 그림자 색상과 투명도
-                      spreadRadius: 0, // 그림자의 확산 정도
-                      blurRadius: 4, // 흐림 정도
-                      offset: Offset(0, 4), // 그림자의 위치
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
                     ),
                   ],
                 ),
                 child: Container(
-                  padding: EdgeInsets.only(top: 17, left: 7.0),
-                  child: Text(
-                    "<시험기간> 바빠서 연락 잘 못 받음.",
+                  //padding: EdgeInsets.only(top: 17, left: 7.0),
+                  child: isEditing ? buildTextField() : buildText(),
+                  /*Text(
+                    widget.statusText,
                     style: TextStyle(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: Color(0xff000000),
                     ),
-                  ),
+                  ),*/
                 ),
               ),
               Positioned(
@@ -59,10 +82,10 @@ class _ProfileState extends State<Profile> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.25), // 그림자 색상과 투명도
-                        spreadRadius: 0, // 그림자의 확산 정도
-                        blurRadius: 4, // 흐림 정도
-                        offset: Offset(0, 4), // 그림자의 위치
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
                       ),
                     ],
                   ),
@@ -82,10 +105,10 @@ class _ProfileState extends State<Profile> {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.25), // 그림자 색상과 투명도
-                      spreadRadius: 0, // 그림자의 확산 정도
-                      blurRadius: 4, // 흐림 정도
-                      offset: Offset(0, 4), // 그림자의 위치
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
                     ),
                   ],
                 ),
@@ -97,7 +120,7 @@ class _ProfileState extends State<Profile> {
                   width: 136,
                   height: 136,
                   child: ImageData(
-                    IconsPath.family1,
+                    widget.imagePath,
                   ),
                 ),
               ),
@@ -117,10 +140,10 @@ class _ProfileState extends State<Profile> {
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.25), // 그림자 색상과 투명도
-                        spreadRadius: 0, // 그림자의 확산 정도
-                        blurRadius: 4, // 흐림 정도
-                        offset: Offset(0, 4), // 그림자의 위치
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
                       ),
                     ],
                   ),
@@ -142,10 +165,10 @@ class _ProfileState extends State<Profile> {
                     shape: BoxShape.circle,
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.25), // 그림자 색상과 투명도
-                        spreadRadius: 0, // 그림자의 확산 정도
-                        blurRadius: 4, // 흐림 정도
-                        offset: Offset(0, 4), // 그림자의 위치
+                        color: Colors.black.withOpacity(0.25),
+                        spreadRadius: 0,
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
                       ),
                     ],
                   ),
@@ -177,6 +200,57 @@ class _ProfileState extends State<Profile> {
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget buildTextField() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 7),
+      child: TextField(
+        controller: textController,
+        onEditingComplete: () {
+          setState(() {
+            isEditing = false;
+          });
+        },
+        style: const TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff000000),
+        ),
+        maxLength: 30,
+        decoration: InputDecoration(
+          counterText: "",
+          suffix: Text(
+            "${textController.text.length}/30",
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
+              color: Color(0xff8d8d8d),
+            ),
+          ),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffe1e1e1), width: 2),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Color(0xffe1e1e1), width: 2),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildText() {
+    return Container(
+      padding: EdgeInsets.only(top: 17, left: 7.0),
+      child: Text(
+        textController.text,
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w400,
+          color: Color(0xff000000),
+        ),
       ),
     );
   }
