@@ -30,7 +30,7 @@ class Home extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFD9AE89),
+        //backgroundColor: Color(0xFFD9AE89),
         elevation: 0,
         toolbarHeight: 54,
         leading: Row(
@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
           children: [
             IconButton(
               icon: Icon(Icons.notifications_none_outlined,
-                  color: Colors.white, size: 30),
+                  color: Color(0xffd9ae89), size: 30),
               onPressed: () {
                 Navigator.push(
                   context,
