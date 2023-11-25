@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-
-import 'pages/chat.dart';
-import 'pages/home.dart';
-import 'pages/mypage.dart';
+import 'package:get/get.dart';
+import 'package:inthon_frontend/controller/bottom_nav_controller.dart';
+import 'package:inthon_frontend/pages/home.dart';
+import 'package:inthon_frontend/pages/chat.dart';
+import 'package:inthon_frontend/pages/mypage.dart';
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -35,7 +36,7 @@ class _AppState extends State<App> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
-          height: 65,
+          //height: 65,
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
