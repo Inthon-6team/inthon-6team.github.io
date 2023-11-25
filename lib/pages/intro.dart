@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:inthon_frontend/app.dart';
 import 'package:inthon_frontend/components/image_data.dart';
 import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
@@ -67,7 +68,7 @@ class Intro extends StatelessWidget {
                 } else {
                   print("이미 로그인 되어있음");
                   Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
+                    context, MaterialPageRoute(builder: (context) => App()));
                 }
               },
               child: Container(
