@@ -4,6 +4,8 @@ import 'package:inthon_frontend/components/image_data.dart';
 import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
 import 'package:inthon_frontend/repository/auth_header.dart';
+import 'package:inthon_frontend/repository/profile_repository.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro extends StatelessWidget {
   const Intro({super.key});
@@ -51,8 +53,14 @@ class Intro extends StatelessWidget {
             SizedBox(height: 30),
             GestureDetector(
               onTap: () async {
+                final preferences = await SharedPreferences.getInstance();
                 final token = (await getAuthHeader())['Authorization'];
-                if (token == "Bearer null" || token == null || token == "") {
+                try {
+                  await fetchMyProfile();
+                } catch (e) {
+                  preferences.remove('access_token');
+                }
+                if ((preferences.getString('access_token')) == null) {
                   print("로그인 안되어있음");
                   Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Login()));
