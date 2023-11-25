@@ -52,13 +52,11 @@ Future<Map<String, dynamic>> updateStatusText(text) async {
     // Response response = await _dio.post('/private-post',
     //     data: data, options: Options(headers: authHeaders));
 
-    var response = await dio.patch(
-      url,
-      data: {
-        'introduction': text,
-      },
-      options: Options(headers: authHeaders)
-    );
+    var response = await dio.patch(url,
+        data: {
+          'introduction': text,
+        },
+        options: Options(headers: authHeaders));
 
     if (response.statusCode == 200) {
       print("Response data: ${response.data}");
@@ -91,10 +89,7 @@ Future<Map<String, dynamic>> fetchMyProfile() async {
     // Response response = await _dio.post('/private-post',
     //     data: data, options: Options(headers: authHeaders));
 
-    var response = await dio.get(
-      url,
-      options: Options(headers: authHeaders)
-    );
+    var response = await dio.get(url, options: Options(headers: authHeaders));
 
     if (response.statusCode == 200) {
       print("Response data: ${response.data}");
@@ -128,13 +123,11 @@ Future<Map<String, dynamic>> updateName(name) async {
     // Response response = await _dio.post('/private-post',
     //     data: data, options: Options(headers: authHeaders));
 
-    var response = await dio.patch(
-      url,
-      data: {
-        'name': name,
-      },
-      options: Options(headers: authHeaders)
-    );
+    var response = await dio.patch(url,
+        data: {
+          'name': name,
+        },
+        options: Options(headers: authHeaders));
 
     if (response.statusCode == 200) {
       print("Response data: ${response.data}");
