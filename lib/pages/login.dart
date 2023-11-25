@@ -148,16 +148,16 @@ class _LoginState extends State<Login> {
                   if (token != "error") {
                     // 로그인 성공
                     print('Login successful! Token: $token');
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => App()),
+                    );
                     // TODO: 로그인 후 화면 전환 또는 다른 동작 수행
                   } else {
                     // 로그인 실패
                     print('Login failed');
                     // TODO: 실패에 따른 사용자에게 알림 또는 다른 동작 수행
                   }
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => App()),
-                  );
                 },
                 child: Container(
                   width: 283.238,

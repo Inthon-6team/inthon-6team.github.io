@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
+import 'package:inthon_frontend/repository/auth_header.dart';
 
 class Intro extends StatelessWidget {
   const Intro({super.key});
@@ -48,9 +50,17 @@ class Intro extends StatelessWidget {
             ),
             SizedBox(height: 30),
             GestureDetector(
-              onTap: () {
-                Navigator.push(
+              onTap: () async {
+                final token = (await getAuthHeader())['Authorization'];
+                if (token == "Bearer null" || token == null || token == "") {
+                  print("로그인 안되어있음");
+                  Navigator.push(
                     context, MaterialPageRoute(builder: (context) => Login()));
+                } else {
+                  print("이미 로그인 되어있음");
+                  Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+                }
               },
               child: Container(
                 margin: EdgeInsets.only(left: (size.width - 283.238) / 2),
@@ -70,7 +80,7 @@ class Intro extends StatelessWidget {
                 ),
                 child: Center(
                     child: Text(
-                  "Click to sign in",
+                  "Click to Start",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
