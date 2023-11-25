@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/repository/profile_repository.dart';
 
 class Profile extends StatefulWidget {
+  final String userId;
   final String nickName;
   final String statusText;
   final String imagePath;
 
-  Profile(
-      {required this.nickName,
-      required this.statusText,
-      required this.imagePath});
+  Profile({
+    required this.userId,
+    required this.nickName,
+    required this.statusText,
+    required this.imagePath});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -42,10 +45,20 @@ class _ProfileState extends State<Profile> {
               height: 76,
             ),
             GestureDetector(
-              onTap: () {
-                setState(() {
-                  isEditing = true;
-                });
+              onTap: () async {
+                // fetchMyProfile에서 받아온 데이터에서 userId를 가져오기
+                var data = await fetchMyProfile();
+
+                print(data.runtimeType);
+                if (data['id'] == widget.userId) {
+                  print("프로필 수정 가능");
+                  setState(() {
+                    isEditing = true;
+                  });
+                } else {
+                  print("다른 사용자의 프로필은 수정할 수 없습니다.");
+                  // TODO: 다른 사용자의 프로필은 수정할 수 없다는 알림창 띄우기
+                }
               },
               child: Container(
                 width: 139,

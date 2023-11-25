@@ -90,6 +90,7 @@ class _HomeState extends State<Home> {
               itemCount: profileData.length,
               itemBuilder: (context, index) {
                 return Profile(
+                  userId: profileData[index]['id']!,
                   nickName: profileData[index]['nickName']!,
                   statusText: profileData[index]['statusText']!,
                   imagePath: profileData[index]['imagePath']!,
