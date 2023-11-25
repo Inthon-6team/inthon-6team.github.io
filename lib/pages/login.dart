@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/components/image_data.dart';
-import 'package:inthon_frontend/pages/home.dart';
+import '../app.dart';
 import 'package:inthon_frontend/repository/login_repository.dart';
 
 import '../app.dart';
@@ -65,10 +65,10 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                   hintText: 'ID',
                   hintStyle: TextStyle(
-                    color: Color(0xff9e9e9e),
+                    color: Color(0xff9f9f9f),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: 11,
                     letterSpacing: -0.50,
                   ),
                   border: OutlineInputBorder(
@@ -96,10 +96,10 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                   hintText: 'Password',
                   hintStyle: TextStyle(
-                    color: Color(0xff9e9e9e),
+                    color: Color(0xff9f9f9f),
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: 11,
                     letterSpacing: -0.50,
                   ),
                   border: OutlineInputBorder(
@@ -127,9 +127,11 @@ class _LoginState extends State<Login> {
                 child: Text(
                   'Forgot Password?',
                   style: TextStyle(
+                    fontSize: 11,
                     color: Color(0xFFA6633C),
                     fontFamily: 'Poppins',
                     decoration: TextDecoration.underline,
+                    decorationColor: Color(0xFFA6633C),
                   ),
                 )),
             Padding(
@@ -158,8 +160,8 @@ class _LoginState extends State<Login> {
                   );
                 },
                 child: Container(
-                  width: 300,
-                  height: 40,
+                  width: 283.238,
+                  height: 36.813,
                   decoration: BoxDecoration(
                       color: Color(0xFFD9AE89),
                       borderRadius: BorderRadius.circular(10.0)),
@@ -167,9 +169,9 @@ class _LoginState extends State<Login> {
                     child: Text(
                       'Sign In',
                       style: TextStyle(
-                          fontSize: 18.0,
+                          fontSize: 12.0,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -178,8 +180,8 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               child: Container(
-                width: 300,
-                height: 40,
+                width: 283.238,
+                height: 36.813,
                 decoration: BoxDecoration(
                     color: Color(0xFFD9AE89),
                     borderRadius: BorderRadius.circular(10.0)),
@@ -190,9 +192,9 @@ class _LoginState extends State<Login> {
                   Text(
                     'Sign In with Google',
                     style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 12.0,
                         color: Colors.white,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w600),
                   ),
                 ]),
               ),
@@ -204,6 +206,7 @@ class _LoginState extends State<Login> {
                     child: Text(
                       'Don\'t have an acount?',
                       style: TextStyle(
+                        fontSize: 11,
                         fontFamily: 'Poppins',
                         color: Color(0xFF9F9F9F),
                       ),
@@ -213,9 +216,11 @@ class _LoginState extends State<Login> {
                     child: Text(
                       'Sign Up!',
                       style: TextStyle(
+                        fontSize: 11,
                         fontFamily: 'Poppins',
                         color: Color(0xFFA6633C),
                         decoration: TextDecoration.underline,
+                        decorationColor: Color(0xFFA6633C),
                       ),
                     )),
               ],
