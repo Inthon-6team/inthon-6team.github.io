@@ -3,11 +3,17 @@ import 'package:get/get.dart';
 import 'package:inthon_frontend/pages/notice.dart';
 import 'package:inthon_frontend/components/profile.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/repository/profile_repository.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   //const Home({super.key});
 
-  final List<Map<String, String>> profileData = [
+  /*final List<Map<String, String>> profileData = [
     {
       'nickName': "어무니",
       'statusText': "우리 가족 사랑해 ~",
@@ -28,7 +34,20 @@ class Home extends StatelessWidget {
       'statusText': "해커톤 나가서 24시간동안 연락 안돼용",
       'imagePath': 'assets/images/family2.png',
     },
-  ];
+  ];*/
+
+  List<Map<String, String>> profileData = [];
+
+  @override
+  void initState() {
+    super.initState();
+    //int groupId = 1;
+    fetchProfileData().then((data) {
+      setState(() {
+        profileData = data;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +87,7 @@ class Home extends StatelessWidget {
                 mainAxisSpacing: 30.0, // 세로 간격
                 childAspectRatio: 0.75,
               ),
-              itemCount: 4, //itemDataList.length,
+              itemCount: profileData.length,
               itemBuilder: (context, index) {
                 return Profile(
                   nickName: profileData[index]['nickName']!,
