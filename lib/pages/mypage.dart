@@ -11,17 +11,8 @@ class MyPage extends StatelessWidget {
           backgroundColor: Colors.white,
           elevation: 0,
         ),
-        body: Column(
-          children: [
-            Text(
-              "멀리서도\n 가족과 함께",
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.w800,
-                color: Color(0xff000000),
-              ),
-            ),
-          ],
+        body: Center(
+          child: Text("mypage"),
         ));
   }
 }
