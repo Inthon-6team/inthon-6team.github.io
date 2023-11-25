@@ -137,13 +137,13 @@ class _LoginState extends State<Login> {
             Padding(
               padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: GestureDetector(
-                onTap: () {
+                onTap: () async {
                   String id = idController.text;
                   String password = passwordController.text;
 
                   // 여기에서 login 함수 호출
                   // login 함수는 토큰을 반환하거나 실패하면 null을 반환
-                  Future<String> token = login(id, password);
+                  String token = await login(id, password);
 
                   if (token != "error") {
                     // 로그인 성공
