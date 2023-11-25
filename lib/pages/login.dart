@@ -1,26 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/pages/home.dart';
+import 'package:inthon_frontend/repository/login_repository.dart';
+
 import '../app.dart';
 
 class Login extends StatefulWidget {
-  const Login({super.key});
-
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  final TextEditingController _idcontroller = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController idController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   bool _isDisabled = true;
   bool _obscureText = true;
-
-  @override
-  void dispose() {
-    _idcontroller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +53,7 @@ class _LoginState extends State<Login> {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               height: 50,
               child: TextFormField(
-                controller: _idcontroller,
+                controller: idController,
                 enabled: true,
                 style: TextStyle(
                     fontFamily: 'Poppins',
@@ -89,7 +84,7 @@ class _LoginState extends State<Login> {
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               height: 50,
               child: TextFormField(
-                controller: _passwordController,
+                controller: passwordController,
                 enabled: true,
                 style: TextStyle(
                     fontFamily: 'Poppins',
@@ -141,8 +136,26 @@ class _LoginState extends State<Login> {
               padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: GestureDetector(
                 onTap: () {
+                  String id = idController.text;
+                  String password = passwordController.text;
+
+                  // 여기에서 login 함수 호출
+                  // login 함수는 토큰을 반환하거나 실패하면 null을 반환
+                  Future<String> token = login(id, password);
+
+                  if (token != "error") {
+                    // 로그인 성공
+                    print('Login successful! Token: $token');
+                    // TODO: 로그인 후 화면 전환 또는 다른 동작 수행
+                  } else {
+                    // 로그인 실패
+                    print('Login failed');
+                    // TODO: 실패에 따른 사용자에게 알림 또는 다른 동작 수행
+                  }
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => App()));
+                    context,
+                    MaterialPageRoute(builder: (context) => Home()),
+                  );
                 },
                 child: Container(
                   width: 300,

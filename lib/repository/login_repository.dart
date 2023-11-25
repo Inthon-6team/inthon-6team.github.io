@@ -1,17 +1,28 @@
 import 'package:dio/dio.dart';
+//import 'package:hive/hive.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'dart:convert';
 
-Future<List<Map<String, String>>> login() async {
+Future<String> login(id, password) async {
   var dio = Dio();
   var url = 'https://hello-t2pqd7uv4q-uc.a.run.app/auth/login';
 
   try {
-    var response = await dio.post(url);
+    var response = await dio.post(
+      url,
+      data: {
+        'id': id,
+        'password': password,
+      },
+    );
 
     if (response.statusCode == 201) {
       print("Response data: ${response.data}");
-      final box = await Hive.openBox('token');
-      box.put('access_token', response.data['accessToken']);
+
+      final preferences = await SharedPreferences.getInstance();
+      preferences.setString('access_token', response.data['accessToken']);
+      return response.data['accessToken'];
     } else {
       throw Exception('Failed to load profiles');
     }
@@ -23,6 +34,6 @@ Future<List<Map<String, String>>> login() async {
     } else {
       print('Error occurred: $e');
     }
-    rethrow;
+    return "error";
   }
 }

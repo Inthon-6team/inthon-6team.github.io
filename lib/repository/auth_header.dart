@@ -1,11 +1,13 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 Future getAuthHeader() async {
-    Box _tokenBox = await Hive.openBox('token');
-    var accessToken = _tokenBox.get('access_token');
+  final preferences = await SharedPreferences.getInstance();
+  var accessToken = preferences.getString('access_token');
 
-    final headers = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $accessToken"
-    };
+  final headers = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer $accessToken"
+  };
 
-    return headers;
+  return headers;
 }
