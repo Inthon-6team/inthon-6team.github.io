@@ -35,32 +35,35 @@ class _AppState extends State<App> {
           child: _widgetOptions.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: Container(
+          height: 65,
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                icon:
+                    Icon(Icons.add_box_outlined, color: Colors.white, size: 30),
                 activeIcon:
-                    Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                    Icon(Icons.add_box_rounded, color: Colors.white, size: 30),
                 label: "chat",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                icon: Icon(Icons.home_outlined, color: Colors.white, size: 30),
                 activeIcon:
-                    Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                    Icon(Icons.home_filled, color: Colors.white, size: 30),
                 label: "home",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                icon: Icon(Icons.person_outline, color: Colors.white, size: 30),
                 activeIcon:
-                    Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                    Icon(Icons.person_rounded, color: Colors.white, size: 30),
                 label: "mypage",
               ),
             ],
             currentIndex: _selectedIndex,
-            selectedItemColor: const Color(0xffFF5C39),
-            unselectedItemColor: const Color(0xff757575),
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
             selectedLabelStyle: TextStyle(fontFamily: "SUITE"),
+            backgroundColor: Color(0xFFD9AE89),
           ),
         ));
   }
