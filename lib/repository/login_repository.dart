@@ -21,7 +21,7 @@ Future<String> login(id, password) async {
       print("Response data: ${response.data}");
 
       final preferences = await SharedPreferences.getInstance();
-      preferences.setString('access_token', response.data['accessToken']);
+      await preferences.setString('access_token', response.data['accessToken']);
       return response.data['accessToken'];
     } else {
       throw Exception('Failed to load profiles');

@@ -5,8 +5,30 @@ import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
 import 'package:inthon_frontend/repository/auth_header.dart';
 
-class Intro extends StatelessWidget {
+class Intro extends StatefulWidget {
   const Intro({super.key});
+
+  @override
+  State<Intro> createState() => _IntroState();
+}
+
+class _IntroState extends State<Intro> {
+  double opacity1 = 1.0;
+  double opacity2 = 1.0;
+
+  @override
+  void initState() {
+    super.initState();
+    fadeInImage();
+  }
+
+  fadeInImage() {
+    Future.delayed(Duration(seconds: 0), () {
+      setState(() {
+        opacity1 = 1.0;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,10 +62,14 @@ class Intro extends StatelessWidget {
                     height: 175,
                     child: ImageData(IconsPath.intro2),
                   ),*/
-                  Container(
-                    width: 393,
-                    height: 421,
-                    child: ImageData(IconsPath.intro1),
+                  AnimatedOpacity(
+                    opacity: opacity1,
+                    duration: Duration(seconds: 3),
+                    child: Container(
+                      width: 393,
+                      height: 421,
+                      child: ImageData(IconsPath.intro1),
+                    ),
                   ),
                 ]),
               ),
@@ -51,17 +77,17 @@ class Intro extends StatelessWidget {
             SizedBox(height: 30),
             GestureDetector(
               onTap: () async {
-                final token = (await getAuthHeader())['Authorization'];
-                if (token == "Bearer null" || token == null || token == "") {
-                  print("로그인 안되어있음");
-                  Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Login()));
-                } else {
-                  print("이미 로그인 되어있음");
-                  Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Home()));
-                }
-              },
+                            final token = (await getAuthHeader())['Authorization'];
+                            if (token == "Bearer null" || token == null || token == "") {
+                              print("로그인 안되어있음");
+                              Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => Login()));
+                            } else {
+                              print("이미 로그인 되어있음");
+                              Navigator.push(
+                                context, MaterialPageRoute(builder: (context) => Home()));
+                            }
+                          },
               child: Container(
                 margin: EdgeInsets.only(left: (size.width - 283.238) / 2),
                 width: 283.238,

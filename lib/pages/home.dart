@@ -78,6 +78,7 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Container(
             height: 550,
+            color: Colors.white,
             //padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
             child: GridView.builder(
               shrinkWrap: true,
@@ -90,6 +91,7 @@ class _HomeState extends State<Home> {
               itemCount: profileData.length,
               itemBuilder: (context, index) {
                 return Profile(
+                  userId: profileData[index]['id']!,
                   nickName: profileData[index]['nickName']!,
                   statusText: profileData[index]['statusText']!,
                   imagePath: profileData[index]['imagePath']!,

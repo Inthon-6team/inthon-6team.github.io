@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/app.dart';
+import 'package:inthon_frontend/pages/beforeintro.dart';
 import 'package:inthon_frontend/pages/intro.dart';
 import 'package:inthon_frontend/pages/login.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Intro(),
+      home: BeforeIntro(),
     );
   }
 }
