@@ -33,24 +33,21 @@ class _LoginState extends State<Login> {
                 child: Text(
                   'Welcome !',
                   style: TextStyle(
-                    fontFamily: 'Pretendard',
+                    fontFamily: 'Poppins',
                     fontSize: 40,
-                    fontWeight: FontWeight.bold,
+                    fontWeight: FontWeight.w800,
                   ),
                 )),
+            SizedBox(height: 38),
             Container(
-                padding: EdgeInsets.fromLTRB(0, 40, 0, 5),
                 child: Text(
-                  'Login',
-                  style: TextStyle(
-                    fontFamily: 'Pretendard',
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
-            SizedBox(
-              height: 0,
-            ),
+              'Sign In',
+              style: TextStyle(
+                fontFamily: 'Poppins',
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            )),
             Container(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
               height: 50,
@@ -58,7 +55,7 @@ class _LoginState extends State<Login> {
                 controller: _idcontroller,
                 enabled: true,
                 style: TextStyle(
-                    fontFamily: 'Pretendard',
+                    fontFamily: 'Poppins',
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     letterSpacing: -0.50,
@@ -67,10 +64,10 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                   hintText: 'ID',
                   hintStyle: TextStyle(
-                    color: Color(0xff9e9e9e),
-                    fontFamily: 'Pretendard',
+                    color: Color(0xff9f9f9f),
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: 11,
                     letterSpacing: -0.50,
                   ),
                   border: OutlineInputBorder(
@@ -89,7 +86,7 @@ class _LoginState extends State<Login> {
                 controller: _idcontroller,
                 enabled: true,
                 style: TextStyle(
-                    fontFamily: 'Pretendard',
+                    fontFamily: 'Poppins',
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     letterSpacing: -0.50,
@@ -98,10 +95,10 @@ class _LoginState extends State<Login> {
                 decoration: InputDecoration(
                   hintText: 'Password',
                   hintStyle: TextStyle(
-                    color: Color(0xff9e9e9e),
-                    fontFamily: 'Pretendard',
+                    color: Color(0xff9f9f9f),
+                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
-                    fontSize: 18,
+                    fontSize: 11,
                     letterSpacing: -0.50,
                   ),
                   border: OutlineInputBorder(
