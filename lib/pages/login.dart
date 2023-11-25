@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import '../app.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -114,19 +115,25 @@ class _LoginState extends State<Login> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 60, 0, 0),
-              child: Container(
-                width: 300,
-                height: 40,
-                decoration: BoxDecoration(
-                    color: Color(0xFFD9AE89),
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: Center(
-                  child: Text(
-                    'Sign In',
-                    style: TextStyle(
-                        fontSize: 18.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => App()));
+                },
+                child: Container(
+                  width: 300,
+                  height: 40,
+                  decoration: BoxDecoration(
+                      color: Color(0xFFD9AE89),
+                      borderRadius: BorderRadius.circular(10.0)),
+                  child: Center(
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),

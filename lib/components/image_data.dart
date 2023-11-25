@@ -37,5 +37,8 @@ class IconsPath {
   static String get family1 => 'assets/images/family1.png';
   static String get click => 'assets/svg/click.svg';
 
+  static String get intro1 => 'assets/images/intro1.png';
+  static String get intro2 => 'assets/images/intro2.png';
+
   static String get googlelogo => 'assets/images/google_logo.png';
 }
