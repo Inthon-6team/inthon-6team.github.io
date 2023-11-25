@@ -10,12 +10,6 @@ class MyPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
-            onPressed: () {
-              Get.back();
-            },
-          ),
         ),
         body: Center(
           child: Text("my page"),
