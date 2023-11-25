@@ -9,11 +9,11 @@ class Profile extends StatefulWidget {
   final String statusText;
   final String imagePath;
 
-  Profile({
-    required this.userId,
-    required this.nickName,
-    required this.statusText,
-    required this.imagePath});
+  Profile(
+      {required this.userId,
+      required this.nickName,
+      required this.statusText,
+      required this.imagePath});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -126,11 +126,14 @@ class _ProfileState extends State<Profile> {
             Positioned(
               top: 8,
               left: 8,
-              child: Container(
-                width: 136,
-                height: 136,
-                child: ImageData(
-                  widget.imagePath,
+              child: ClipOval(
+                child: Container(
+                  width: 136,
+                  height: 136,
+                  child: Image.network(
+                    widget.imagePath,
+                    fit: BoxFit.cover, // 이미지가 컨테이너를 완전히 채우도록 조정
+                  ),
                 ),
               ),
             ),
