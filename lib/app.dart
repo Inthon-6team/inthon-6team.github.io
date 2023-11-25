@@ -12,7 +12,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
   @override
   void initState() {
     super.initState();
@@ -40,22 +40,41 @@ class _AppState extends State<App> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(Icons.chat_bubble_outline_outlined,
-                    color: Colors.white, size: 30),
-                activeIcon: Icon(Icons.chat_bubble_rounded,
-                    color: Colors.white, size: 30),
+                icon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child: Icon(Icons.chat_bubble_outline_outlined,
+                      color: Colors.white, size: 30),
+                ),
+                activeIcon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child: Icon(Icons.chat_bubble_rounded,
+                      color: Colors.white, size: 30),
+                ),
                 label: "chat",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.home_outlined, color: Colors.white, size: 30),
-                activeIcon:
-                    Icon(Icons.home_filled, color: Colors.white, size: 30),
+                icon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child:
+                      Icon(Icons.home_outlined, color: Colors.white, size: 30),
+                ),
+                activeIcon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child: Icon(Icons.home_filled, color: Colors.white, size: 30),
+                ),
                 label: "home",
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person_outline, color: Colors.white, size: 30),
-                activeIcon:
-                    Icon(Icons.person_rounded, color: Colors.white, size: 30),
+                icon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child:
+                      Icon(Icons.person_outline, color: Colors.white, size: 30),
+                ),
+                activeIcon: Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
+                  child:
+                      Icon(Icons.person_rounded, color: Colors.white, size: 30),
+                ),
                 label: "mypage",
               ),
             ],
