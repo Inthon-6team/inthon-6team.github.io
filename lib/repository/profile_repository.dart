@@ -10,12 +10,12 @@ Future<List<Map<String, String>>> fetchProfileData() async {
     final authHeaders = await getAuthHeader();
     // Response response = await _dio.post('/private-post',
     //     data: data, options: Options(headers: authHeaders));
-  
+
     var response = await dio.get(url, options: Options(headers: authHeaders));
 
     if (response.statusCode == 200) {
       print("Response data: ${response.data}");
-      List<dynamic> data = jsonDecode(response.data);
+      List<dynamic> data = response.data;
       return data
           .map((item) => {
                 'nickName': item['name'] as String,
