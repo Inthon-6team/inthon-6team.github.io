@@ -68,12 +68,12 @@ class _AppState extends State<App> {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child: Icon(Icons.person_outline,
+                  child: Icon(Icons.people_outline,
                       color: Color(0xFFD9AE89), size: 30),
                 ),
                 activeIcon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child: Icon(Icons.person_rounded,
+                  child: Icon(Icons.people_rounded,
                       color: Color(0xFFD9AE89), size: 30),
                 ),
                 label: "mypage",
