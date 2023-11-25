@@ -36,4 +36,6 @@ class ImageData extends StatelessWidget {
 class IconsPath {
   static String get family1 => 'assets/images/family1.png';
   static String get click => 'assets/svg/click.svg';
+
+  static String get googlelogo => 'assets/images/google_logo.png';
 }
