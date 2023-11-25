@@ -3,10 +3,14 @@ import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
 
 class Profile extends StatefulWidget {
+  final String nickName;
   final String statusText;
   final String imagePath;
 
-  Profile({required this.statusText, required this.imagePath});
+  Profile(
+      {required this.nickName,
+      required this.statusText,
+      required this.imagePath});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -28,22 +32,22 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          isEditing = true;
-        });
-      },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: 139,
-                height: 76,
-              ),
-              Container(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Stack(
+          children: [
+            Container(
+              width: 139,
+              height: 76,
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  isEditing = true;
+                });
+              },
+              child: Container(
                 width: 139,
                 height: 66,
                 decoration: BoxDecoration(
@@ -61,45 +65,15 @@ class _ProfileState extends State<Profile> {
                 child: Container(
                   //padding: EdgeInsets.only(top: 17, left: 7.0),
                   child: isEditing ? buildTextField() : buildText(),
-                  /*Text(
-                    widget.statusText,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xff000000),
-                    ),
-                  ),*/
                 ),
               ),
-              Positioned(
-                top: 56,
-                left: 100,
-                child: Container(
-                  width: 20,
-                  height: 20,
-                  decoration: BoxDecoration(
-                    color: Color(0xfff3f3f3),
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ],
-          ),
-          //SizedBox(height: 10),
-          Stack(
-            children: <Widget>[
-              Container(
-                //alignment: Alignment.center,
-                width: 153,
-                height: 153,
+            ),
+            Positioned(
+              top: 56,
+              left: 100,
+              child: Container(
+                width: 20,
+                height: 20,
                 decoration: BoxDecoration(
                   color: Color(0xfff3f3f3),
                   shape: BoxShape.circle,
@@ -113,69 +87,92 @@ class _ProfileState extends State<Profile> {
                   ],
                 ),
               ),
-              Positioned(
-                top: 8,
-                left: 8,
-                child: Container(
-                  width: 136,
-                  height: 136,
-                  child: ImageData(
-                    widget.imagePath,
+            ),
+          ],
+        ),
+        //SizedBox(height: 10),
+        Stack(
+          children: <Widget>[
+            Container(
+              //alignment: Alignment.center,
+              width: 153,
+              height: 153,
+              decoration: BoxDecoration(
+                color: Color(0xfff3f3f3),
+                shape: BoxShape.circle,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4),
                   ),
+                ],
+              ),
+            ),
+            Positioned(
+              top: 8,
+              left: 8,
+              child: Container(
+                width: 136,
+                height: 136,
+                child: ImageData(
+                  widget.imagePath,
                 ),
               ),
-              Positioned(
-                top: 105,
-                left: 100,
-                child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  width: 47,
-                  height: 47,
-                  decoration: BoxDecoration(
-                    color: Color(0xfff3f3f3),
-                    shape: BoxShape.circle,
-                    border: Border.all(
-                      color: Color(0xffffffff), // 테두리 색상
-                      width: 1.0, // 테두리 두께
+            ),
+            Positioned(
+              top: 105,
+              left: 100,
+              child: Container(
+                padding: EdgeInsets.all(10.0),
+                width: 47,
+                height: 47,
+                decoration: BoxDecoration(
+                  color: Color(0xfff3f3f3),
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Color(0xffffffff), // 테두리 색상
+                    width: 1.0, // 테두리 두께
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
                     ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
-                  child: GestureDetector(
-                    onTap: () {},
-                    child: ImageData(IconsPath.click,
-                        isSvg: true, width: 23.745, height: 33.204),
-                  ),
+                  ],
+                ),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: ImageData(IconsPath.click,
+                      isSvg: true, width: 23.745, height: 33.204),
                 ),
               ),
-              Positioned(
-                top: 8,
-                left: 98,
-                child: Container(
-                  width: 15,
-                  height: 15,
-                  decoration: BoxDecoration(
-                    color: Color(0xfff3f3f3),
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
-                  ),
+            ),
+            Positioned(
+              top: 8,
+              left: 98,
+              child: Container(
+                width: 15,
+                height: 15,
+                decoration: BoxDecoration(
+                  color: Color(0xfff3f3f3),
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.25),
+                      spreadRadius: 0,
+                      blurRadius: 4,
+                      offset: Offset(0, 4),
+                    ),
+                  ],
                 ),
               ),
+            ),
 
-              /*child: ClipOval(
+            /*child: ClipOval(
                   child: Container(
                     width: 148.47,
                     height: 148.47,
@@ -197,10 +194,20 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 ),*/
-            ],
+          ],
+        ),
+        SizedBox(height: 10),
+        Expanded(
+          child: Text(
+            widget.nickName,
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w800,
+              color: Color(0xff000000),
+            ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
