@@ -43,37 +43,38 @@ class _AppState extends State<App> {
                 icon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Icon(Icons.chat_bubble_outline_outlined,
-                      color: Colors.white, size: 30),
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 activeIcon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
                   child: Icon(Icons.chat_bubble_rounded,
-                      color: Colors.white, size: 30),
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 label: "chat",
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child:
-                      Icon(Icons.home_outlined, color: Colors.white, size: 30),
+                  child: Icon(Icons.home_outlined,
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 activeIcon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child: Icon(Icons.home_filled, color: Colors.white, size: 30),
+                  child: Icon(Icons.home_filled,
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 label: "home",
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child:
-                      Icon(Icons.person_outline, color: Colors.white, size: 30),
+                  child: Icon(Icons.person_outline,
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 activeIcon: Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 0),
-                  child:
-                      Icon(Icons.person_rounded, color: Colors.white, size: 30),
+                  child: Icon(Icons.person_rounded,
+                      color: Color(0xFFD9AE89), size: 30),
                 ),
                 label: "mypage",
               ),
@@ -83,7 +84,7 @@ class _AppState extends State<App> {
             unselectedItemColor: Colors.white,
             onTap: _onItemTapped,
             selectedLabelStyle: TextStyle(fontFamily: "SUITE"),
-            backgroundColor: Color(0xFFD9AE89),
+            backgroundColor: Colors.white,
           ),
         ));
   }
