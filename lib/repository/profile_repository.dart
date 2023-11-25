@@ -1,12 +1,17 @@
 import 'package:dio/dio.dart';
 import 'dart:convert';
+import './auth_header.dart';
 
 Future<List<Map<String, String>>> fetchProfileData() async {
   var dio = Dio();
   var url = 'https://hello-t2pqd7uv4q-uc.a.run.app/group/members';
 
   try {
-    var response = await dio.get(url);
+    final authHeaders = await getAuthHeader();
+    // Response response = await _dio.post('/private-post',
+    //     data: data, options: Options(headers: authHeaders));
+  
+    var response = await dio.get(url, options: Options(headers: authHeaders));
 
     if (response.statusCode == 200) {
       print("Response data: ${response.data}");
@@ -22,7 +27,6 @@ Future<List<Map<String, String>>> fetchProfileData() async {
       throw Exception('Failed to load profiles');
     }
   } catch (e) {
-    //throw Exception('Error occurred: $e');
     print('Request URL: $url');
     if (e is DioError) {
       print('DioError: ${e.response?.statusCode} ${e.response?.data}');
