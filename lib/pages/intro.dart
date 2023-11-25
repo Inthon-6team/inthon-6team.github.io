@@ -80,7 +80,7 @@ class Intro extends StatelessWidget {
                 ),
                 child: Center(
                     child: Text(
-                  "Click to sign in",
+                  "Click to Start",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
