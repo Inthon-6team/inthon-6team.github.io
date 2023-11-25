@@ -78,6 +78,7 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Container(
             height: 550,
+            color: Colors.white,
             //padding: EdgeInsets.symmetric(vertical: 25.0, horizontal: 16.0),
             child: GridView.builder(
               shrinkWrap: true,
