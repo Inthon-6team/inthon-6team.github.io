@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/app.dart';
 import 'package:inthon_frontend/pages/intro.dart';
+import 'package:inthon_frontend/pages/login.dart';
 
 void main() {
   runApp(const MyApp());
