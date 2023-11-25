@@ -39,10 +39,10 @@ class _AppState extends State<App> {
           child: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon:
-                    Icon(Icons.add_box_outlined, color: Colors.white, size: 30),
-                activeIcon:
-                    Icon(Icons.add_box_rounded, color: Colors.white, size: 30),
+                icon: Icon(Icons.chat_bubble_outline_outlined,
+                    color: Colors.white, size: 30),
+                activeIcon: Icon(Icons.chat_bubble_rounded,
+                    color: Colors.white, size: 30),
                 label: "chat",
               ),
               BottomNavigationBarItem(

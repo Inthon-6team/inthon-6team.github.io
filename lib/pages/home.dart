@@ -9,7 +9,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.grey,
+          backgroundColor: Color(0xFFD9AE89),
           elevation: 0,
           toolbarHeight: 65,
           leading: Row(
@@ -17,7 +17,8 @@ class Home extends StatelessWidget {
             children: [
               // 다른 위젯을 우측으로 밀어내기 위해 Spacer 추가
               IconButton(
-                icon: Icon(Icons.notifications_none_outlined),
+                icon: Icon(Icons.notifications_none_outlined,
+                    color: Colors.white, size: 30),
                 onPressed: () {
                   Navigator.push(
                     context,
