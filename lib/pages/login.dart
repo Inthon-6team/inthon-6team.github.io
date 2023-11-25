@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/repository/auth_header.dart';
+import 'package:inthon_frontend/repository/profile_repository.dart';
 import '../app.dart';
 import 'package:inthon_frontend/repository/login_repository.dart';
 
@@ -148,6 +150,7 @@ class _LoginState extends State<Login> {
                   if (token != "error") {
                     // 로그인 성공
                     print('Login successful! Token: $token');
+                    print(getAuthHeader());
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => App()),
