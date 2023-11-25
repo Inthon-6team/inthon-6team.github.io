@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/pages/beforeintro2.dart';
 import 'package:inthon_frontend/pages/login.dart';
 
-class Intro extends StatefulWidget {
-  const Intro({super.key});
+class BeforeIntro extends StatefulWidget {
+  const BeforeIntro({super.key});
 
   @override
-  State<Intro> createState() => _IntroState();
+  State<BeforeIntro> createState() => _BeforeIntroState();
 }
 
-class _IntroState extends State<Intro> {
+class _BeforeIntroState extends State<BeforeIntro> {
   double opacity1 = 1.0;
-  double opacity2 = 1.0;
 
   @override
   void initState() {
@@ -21,9 +21,14 @@ class _IntroState extends State<Intro> {
   }
 
   fadeInImage() {
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), () {
       setState(() {
         opacity1 = 1.0;
+      });
+
+      Future.delayed(Duration(seconds: 3), () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => BeforeIntro2()));
       });
     });
   }
@@ -66,7 +71,7 @@ class _IntroState extends State<Intro> {
                     child: Container(
                       width: 393,
                       height: 421,
-                      child: ImageData(IconsPath.intro1),
+                      child: ImageData(IconsPath.unpressedintro),
                     ),
                   ),
                 ]),

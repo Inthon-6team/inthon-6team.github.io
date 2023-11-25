@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:inthon_frontend/components/image_data.dart';
+import 'package:inthon_frontend/pages/intro.dart';
 import 'package:inthon_frontend/pages/login.dart';
 
-class Intro extends StatefulWidget {
-  const Intro({super.key});
+class BeforeIntro2 extends StatefulWidget {
+  const BeforeIntro2({super.key});
 
   @override
-  State<Intro> createState() => _IntroState();
+  State<BeforeIntro2> createState() => _BeforeIntro2State();
 }
 
-class _IntroState extends State<Intro> {
+class _BeforeIntro2State extends State<BeforeIntro2> {
   double opacity1 = 1.0;
-  double opacity2 = 1.0;
 
   @override
   void initState() {
@@ -21,9 +21,14 @@ class _IntroState extends State<Intro> {
   }
 
   fadeInImage() {
-    Future.delayed(Duration(seconds: 0), () {
+    Future.delayed(Duration(seconds: 1, milliseconds: 500), () {
       setState(() {
         opacity1 = 1.0;
+      });
+
+      Future.delayed(Duration(seconds: 3), () {
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (context) => Intro()));
       });
     });
   }
@@ -66,7 +71,7 @@ class _IntroState extends State<Intro> {
                     child: Container(
                       width: 393,
                       height: 421,
-                      child: ImageData(IconsPath.intro1),
+                      child: ImageData(IconsPath.pressedintro),
                     ),
                   ),
                 ]),
@@ -79,7 +84,7 @@ class _IntroState extends State<Intro> {
               child: GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login()));
+                      MaterialPageRoute(builder: (context) => Intro()));
                 },
                 child: Container(
                   margin: EdgeInsets.only(left: (size.width - 283.238) / 2),
