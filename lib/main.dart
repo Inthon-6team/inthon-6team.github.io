@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/app.dart';
-import 'package:inthon_frontend/pages/login.dart';
+import 'package:inthon_frontend/pages/intro.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Login(),
+      home: Intro(),
     );
   }
 }
