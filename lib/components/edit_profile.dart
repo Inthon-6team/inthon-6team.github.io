@@ -132,7 +132,7 @@ class _EditDialogState extends State<EditDialog> {
                           ),
                           child: GestureDetector(
                             onTap: () {},
-                            child: ImageData(IconsPath.click,
+                            child: ImageData(IconsPath.camera,
                                 isSvg: true, width: 23.745, height: 33.204),
                           ),
                         ),
