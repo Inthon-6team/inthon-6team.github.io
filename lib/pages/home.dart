@@ -14,29 +14,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   //const Home({super.key});
 
-  /*final List<Map<String, String>> profileData = [
-    {
-      'nickName': "어무니",
-      'statusText': "우리 가족 사랑해 ~",
-      'imagePath': 'https://avatars.githubusercontent.com/u/54667577?v=4',
-    },
-    {
-      'nickName': "빠덜",
-      'statusText': "건 강 조 심",
-      'imagePath': 'https://avatars.githubusercontent.com/u/54667577?v=4',
-    },
-    {
-      'nickName': "엄마아들",
-      'statusText': "<시험기간> 바빠서 연락 잘 못 받음ㅜ",
-      'imagePath': 'https://avatars.githubusercontent.com/u/54667577?v=4',
-    },
-    {
-      'nickName': "막둥이",
-      'statusText': "해커톤 나가서 24시간동안 연락 안돼용",
-      'imagePath': 'https://avatars.githubusercontent.com/u/54667577?v=4',
-    },
-  ];*/
-
   List<Map<String, String>> profileData = [];
 
   @override
@@ -54,8 +31,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Color(0xFFffffff),
       appBar: AppBar(
-        backgroundColor: Color(0xFFffffff),
+        backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 54,
         leading: Row(

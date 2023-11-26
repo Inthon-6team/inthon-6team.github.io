@@ -28,22 +28,12 @@ class _LoginState extends State<Login> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-                padding: EdgeInsets.fromLTRB(35, 150, 0, 0),
-                child: Text(
-                  'Welcome !',
-                  style: TextStyle(
-                    fontFamily: 'Poppins',
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
-                  ),
-                )),
+            SizedBox(height: 248),
             Container(
                 padding: EdgeInsets.fromLTRB(0, 30, 0, 5),
                 child: Text(
                   'Sign In',
                   style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
@@ -58,7 +48,6 @@ class _LoginState extends State<Login> {
                 controller: idController,
                 enabled: true,
                 style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     letterSpacing: -0.50,
@@ -68,7 +57,6 @@ class _LoginState extends State<Login> {
                   hintText: 'ID',
                   hintStyle: TextStyle(
                     color: Color(0xff9f9f9f),
-                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     fontSize: 11,
                     letterSpacing: -0.50,
@@ -89,7 +77,6 @@ class _LoginState extends State<Login> {
                 controller: passwordController,
                 enabled: true,
                 style: TextStyle(
-                    fontFamily: 'Poppins',
                     fontSize: 18,
                     fontWeight: FontWeight.normal,
                     letterSpacing: -0.50,
@@ -99,7 +86,6 @@ class _LoginState extends State<Login> {
                   hintText: 'Password',
                   hintStyle: TextStyle(
                     color: Color(0xff9f9f9f),
-                    fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,
                     fontSize: 11,
                     letterSpacing: -0.50,
@@ -131,7 +117,6 @@ class _LoginState extends State<Login> {
                   style: TextStyle(
                     fontSize: 11,
                     color: Color(0xFFA6633C),
-                    fontFamily: 'Poppins',
                     decoration: TextDecoration.underline,
                     decorationColor: Color(0xFFA6633C),
                   ),
@@ -189,11 +174,12 @@ class _LoginState extends State<Login> {
                     color: Color(0xFFD9AE89),
                     borderRadius: BorderRadius.circular(10.0)),
                 child: Row(children: [
-                  SizedBox(width: 45.0),
+                  SizedBox(width: 50.0),
                   ImageData(IconsPath.googlelogo, width: 20, height: 20),
                   SizedBox(width: 10.0),
                   Text(
                     'Sign In with Google',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 12.0,
                         color: Colors.white,
@@ -210,7 +196,6 @@ class _LoginState extends State<Login> {
                       'Don\'t have an acount?',
                       style: TextStyle(
                         fontSize: 11,
-                        fontFamily: 'Poppins',
                         color: Color(0xFF9F9F9F),
                       ),
                     )),
@@ -220,7 +205,6 @@ class _LoginState extends State<Login> {
                       'Sign Up!',
                       style: TextStyle(
                         fontSize: 11,
-                        fontFamily: 'Poppins',
                         color: Color(0xFFA6633C),
                         decoration: TextDecoration.underline,
                         decorationColor: Color(0xFFA6633C),

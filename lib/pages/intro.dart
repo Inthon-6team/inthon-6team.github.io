@@ -16,7 +16,7 @@ class Intro extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.transparent,
           elevation: 0,
         ),
         body: Column(
@@ -28,28 +28,15 @@ class Intro extends StatelessWidget {
                 "멀리서도\n가족과 함께",
                 style: TextStyle(
                   fontSize: 40,
-                  fontFamily: 'Poppins',
                   fontWeight: FontWeight.w800,
                   color: Color(0xff000000),
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Container(
-                height: 430,
-                child: Column(mainAxisSize: MainAxisSize.max, children: [
-                  /*Container(
-                    width: 393,
-                    height: 175,
-                    child: ImageData(IconsPath.intro2),
-                  ),*/
-                  Container(
-                    width: 393,
-                    height: 421,
-                    child: ImageData(IconsPath.intro1),
-                  ),
-                ]),
-              ),
+            Container(
+              width: 393,
+              height: 351,
+              child: ImageData(IconsPath.intro3),
             ),
             SizedBox(height: 30),
             GestureDetector(
@@ -63,12 +50,12 @@ class Intro extends StatelessWidget {
                 }
                 if ((preferences.getString('access_token')) == null) {
                   print("로그인 안되어있음");
-                  Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Login()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 } else {
                   print("이미 로그인 되어있음");
                   Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => App()));
+                      context, MaterialPageRoute(builder: (context) => App()));
                 }
               },
               child: Container(
@@ -93,8 +80,7 @@ class Intro extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w600,
+                    fontWeight: FontWeight.w500,
                     color: Color(0xffffffff),
                   ),
                 )),
