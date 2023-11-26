@@ -20,7 +20,7 @@ class MyPage extends StatelessWidget {
               Container(
                 //padding: EdgeInsets.symmetric(vertical: 8),
                 width: size.width,
-                height: 40,
+                height: 50,
                 decoration: BoxDecoration(
                   color: Color(0xfff3f3f3),
                   borderRadius: BorderRadius.circular(5.0), // 경계선을 둥글게 설정
@@ -36,7 +36,7 @@ class MyPage extends StatelessWidget {
                   // 필요한 기타 TextField 설정
                 ),
               ),
-              SizedBox(height: 22),
+              SizedBox(height: 12),
               Container(
                 width: size.width,
                 height: 422,
