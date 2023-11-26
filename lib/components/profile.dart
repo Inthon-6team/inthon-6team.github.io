@@ -24,12 +24,16 @@ class _ProfileState extends State<Profile> {
   bool isEditing = false;
   late TextEditingController textController;
   bool isSis = false;
+  bool isAdmin = false;
 
   @override
   void initState() {
     super.initState();
     if (widget.userId == 'sister0121') {
       isSis = true;
+    }
+    if (widget.userId == 'admin') {
+      isAdmin = true;
     }
 
     textController = TextEditingController(text: widget.statusText);
@@ -50,22 +54,6 @@ class _ProfileState extends State<Profile> {
               width: 139,
               height: 76,
             ),
-            /*GestureDetector(
-              onTap: () async {
-                // fetchMyProfile에서 받아온 데이터에서 userId를 가져오기
-                var data = await fetchMyProfile();
-
-                print(data.runtimeType);
-                if (data['id'] == widget.userId) {
-                  print("프로필 수정 가능");
-                  setState(() {
-                    isEditing = true;
-                  });
-                } else {
-                  print("다른 사용자의 프로필은 수정할 수 없습니다.");
-                  // TODO: 다른 사용자의 프로필은 수정할 수 없다는 알림창 띄우기
-                }
-              },*/
             Container(
               width: 139,
               height: 66,
@@ -156,20 +144,17 @@ class _ProfileState extends State<Profile> {
                 onTap: isSis
                     ? () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  Story()), // 여기서 AnotherPage는 이동하고자 하는 페이지입니다.
+                          MaterialPageRoute(builder: (context) => Story()),
                         );
                       }
-                    : null, // isSis가 false일 때는 아무 동작도 하지 않음
-
+                    : null,
                 child: ClipOval(
                   child: Container(
                     width: 136,
                     height: 136,
                     child: Image.network(
                       widget.imagePath,
-                      fit: BoxFit.cover, // 이미지가 컨테이너를 완전히 채우도록 조정
+                      fit: BoxFit.cover,
                     ),
                   ),
                 ),
@@ -200,8 +185,11 @@ class _ProfileState extends State<Profile> {
                 ),
                 child: GestureDetector(
                   onTap: () {},
-                  child: ImageData(IconsPath.click,
-                      isSvg: true, width: 23.745, height: 33.204),
+                  child: isAdmin
+                      ? ImageData(IconsPath.add,
+                          isSvg: true, width: 23.745, height: 33.204)
+                      : ImageData(IconsPath.click,
+                          isSvg: true, width: 23.745, height: 33.204),
                 ),
               ),
             ),
