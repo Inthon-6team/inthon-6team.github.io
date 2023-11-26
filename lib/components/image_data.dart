@@ -44,6 +44,8 @@ class IconsPath {
   static String get intro2 => 'assets/images/intro2.png';
   static String get intro3 => 'assets/images/intro3.png';
   static String get intro4 => 'assets/images/intro4.png';
+  static String get index1 => 'assets/images/index1.png';
+  static String get index2 => 'assets/images/index2.png';
 
   static String get googlelogo => 'assets/images/google_logo.png';
   static String get inhomeLogo => 'assets/images/inhome_logo.png';

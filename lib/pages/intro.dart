@@ -30,10 +30,12 @@ class Intro extends StatelessWidget {
                   buildPageView(
                     "멀리서도\n가족과 함께",
                     IconsPath.intro3,
+                    IconsPath.index1,
                   ),
                   buildPageView(
                     "어디서나\n집처럼 소통하기",
                     IconsPath.intro4,
+                    IconsPath.index2,
                   ),
                 ],
               ),
@@ -64,7 +66,7 @@ class Intro extends StatelessWidget {
               },
               child: Container(
                 margin: EdgeInsets.only(
-                    left: (size.width - 283.238) / 2, bottom: size.height / 4),
+                    left: (size.width - 283.238) / 2, bottom: size.height / 5),
                 width: 283.238,
                 height: 36.813,
                 decoration: BoxDecoration(
@@ -96,9 +98,10 @@ class Intro extends StatelessWidget {
   }
 }
 
-Widget buildPageView(String text, String imagePath) {
+Widget buildPageView(String text, String imagePath, String imagePath2) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
+    //mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Container(
         margin: EdgeInsets.only(left: 40, top: 40),
@@ -116,9 +119,13 @@ Widget buildPageView(String text, String imagePath) {
         height: 351,
         child: ImageData(imagePath),
       ),
-      /*Expanded(
-        child: ImageData(imagePath),
-      ),*/
+      Center(
+        child: Container(
+          width: 38,
+          height: 14,
+          child: ImageData(imagePath2),
+        ),
+      ),
     ],
   );
 }
