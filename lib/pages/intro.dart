@@ -22,23 +22,20 @@ class Intro extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.only(left: 40),
-              child: Text(
-                "멀리서도\n가족과 함께",
-                style: TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w800,
-                  color: Color(0xff000000),
-                ),
+            Expanded(
+              child: PageView(
+                children: [
+                  buildPageView(
+                    "멀리서도\n가족과 함께",
+                    IconsPath.intro3,
+                  ),
+                  buildPageView(
+                    "어디서나\n집처럼 소통하기",
+                    IconsPath.intro4,
+                  ),
+                ],
               ),
             ),
-            Container(
-              width: 393,
-              height: 351,
-              child: ImageData(IconsPath.intro3),
-            ),
-            SizedBox(height: 30),
             GestureDetector(
               onTap: () async {
                 final preferences = await SharedPreferences.getInstance();
@@ -59,7 +56,8 @@ class Intro extends StatelessWidget {
                 }
               },
               child: Container(
-                margin: EdgeInsets.only(left: (size.width - 283.238) / 2),
+                margin: EdgeInsets.only(
+                    left: (size.width - 283.238) / 2, bottom: size.height / 4),
                 width: 283.238,
                 height: 36.813,
                 decoration: BoxDecoration(
@@ -89,4 +87,31 @@ class Intro extends StatelessWidget {
           ],
         ));
   }
+}
+
+Widget buildPageView(String text, String imagePath) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Container(
+        margin: EdgeInsets.only(left: 40, top: 40),
+        child: Text(
+          text,
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.w800,
+            color: Color(0xff000000),
+          ),
+        ),
+      ),
+      Container(
+        width: 393,
+        height: 351,
+        child: ImageData(imagePath),
+      ),
+      /*Expanded(
+        child: ImageData(imagePath),
+      ),*/
+    ],
+  );
 }

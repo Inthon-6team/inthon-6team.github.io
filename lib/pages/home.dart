@@ -21,9 +21,11 @@ class _HomeState extends State<Home> {
     super.initState();
     //int groupId = 1;
     fetchProfileData().then((data) {
-      setState(() {
-        profileData = data;
-      });
+      if (mounted) {
+        setState(() {
+          profileData = data;
+        });
+      }
     });
   }
 
