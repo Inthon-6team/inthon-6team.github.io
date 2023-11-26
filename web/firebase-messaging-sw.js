@@ -2,7 +2,6 @@
 importScripts("https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js");
 importScripts("https://www.gstatic.com/firebasejs/8.0.0/firebase-messaging.js");
 
-// 보안과 관련이 없는 키이기 때문에 노출되어도 무방함.
 firebase.initializeApp({
   apiKey: "AIzaSyAPiMqhWGgZASXVKXX2MgodC82bFe7REiI",
   authDomain: "inthon.firebaseapp.com",

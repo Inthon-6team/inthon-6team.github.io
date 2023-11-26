@@ -6,7 +6,6 @@ import 'package:inthon_frontend/pages/login.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future main() async {
-  await dotenv.load(fileName: ".env");
   await Firebase.initializeApp(
     options: const FirebaseOptions(
     apiKey: "AIzaSyAPiMqhWGgZASXVKXX2MgodC82bFe7REiI",
