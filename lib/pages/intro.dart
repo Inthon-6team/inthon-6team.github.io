@@ -40,57 +40,50 @@ class Intro extends StatelessWidget {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () async {
-                // 이하 파이어베이스 토큰 확인하고 firestore로 보내는 코드
-                final device_token = await getDeviceToken();
-                uploadDeviceToken(device_token);
-
-                // 이하 로그인 확인하고 라우팅 처리하는 코드
-                final preferences = await SharedPreferences.getInstance();
-                final token = (await getAuthHeader())['Authorization'];
-                try {
-                  await fetchMyProfile();
-                } catch (e) {
-                  preferences.remove('access_token');
-                }
-                if ((preferences.getString('access_token')) == null) {
-                  print("로그인 안되어있음");
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Login()));
-                } else {
-                  print("이미 로그인 되어있음");
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => App()));
-                }
-              },
-              child: Container(
-                margin: EdgeInsets.only(
-                    left: (size.width - 283.238) / 2, bottom: size.height / 6),
-                width: 283.238,
-                height: 36.813,
-                decoration: BoxDecoration(
-                  color: Color(0xffd9ae89),
-                  borderRadius: BorderRadius.circular(10.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
+            Container(
+              margin:
+                  EdgeInsets.only(left: (size.width - 284) / 2, bottom: 150),
+              width: 284,
+              child: TextButton(
+                onPressed: () async {
+                  final preferences = await SharedPreferences.getInstance();
+                  final token = (await getAuthHeader())['Authorization'];
+                  try {
+                    await fetchMyProfile();
+                  } catch (e) {
+                    preferences.remove('access_token');
+                  }
+                  if ((preferences.getString('access_token')) == null) {
+                    print("로그인 안되어있음");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()));
+                  } else {
+                    print("이미 로그인 되어있음");
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => App()));
+                  }
+                },
+                style: TextButton.styleFrom(
+                  padding: EdgeInsets.zero,
+                  minimumSize: Size(283.238, 36.813),
+                  backgroundColor: Color(0xffd9ae89),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  shadowColor: Colors.black.withOpacity(0.25),
+                  elevation: 4, // 그림자 강도
                 ),
                 child: Center(
-                    child: Text(
-                  "Click to Start",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xffffffff),
+                  child: Text(
+                    "Click to Start",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xffffffff),
+                    ),
                   ),
-                )),
+                ),
               ),
             ),
           ],

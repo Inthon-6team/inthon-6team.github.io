@@ -38,11 +38,6 @@ Future<List<Map<String, String>>> fetchProfileData() async {
   }
 }
 
-/*
- 귀정: 이거 return 값으로 수정된 게 돌아옴 ㅇㅇ,,,
- 수정된 거 받아가지고, 그걸로 바로 화면에 띄워주면 될 듯
- (수정된거 보여주면 될 듯 ㅇㅇ)
-*/
 Future<Map<String, dynamic>> updateStatusText(text) async {
   var dio = Dio();
   var url = 'https://hello-t2pqd7uv4q-uc.a.run.app/user';
