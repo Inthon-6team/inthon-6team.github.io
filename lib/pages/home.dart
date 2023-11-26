@@ -55,12 +55,13 @@ class _HomeState extends State<Home> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        //backgroundColor: Color(0xFFD9AE89),
+        backgroundColor: Color(0xFFffffff),
         elevation: 0,
         toolbarHeight: 54,
         leading: Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+          //mainAxisAlignment: MainAxisAlignment.end,
           children: [
+            SizedBox(width: 5),
             IconButton(
               icon: Icon(Icons.notifications_none_outlined,
                   color: Color(0xffd9ae89), size: 30),
@@ -87,7 +88,7 @@ class _HomeState extends State<Home> {
               );
             },
           ),
-          SizedBox(width: 22),
+          //SizedBox(width: 22),
         ],
       ),
       body: Center(
