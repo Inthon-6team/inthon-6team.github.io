@@ -5,7 +5,9 @@ import 'package:inthon_frontend/components/image_data.dart';
 import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
 import 'package:inthon_frontend/repository/auth_header.dart';
+import 'package:inthon_frontend/repository/device_token.dart';
 import 'package:inthon_frontend/repository/profile_repository.dart';
+import 'package:inthon_frontend/utils/firebase_device_token.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro extends StatelessWidget {

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:inthon_frontend/components/image_data.dart';
 import 'package:inthon_frontend/repository/auth_header.dart';
+import 'package:inthon_frontend/repository/device_token.dart';
 import 'package:inthon_frontend/repository/profile_repository.dart';
+import 'package:inthon_frontend/utils/firebase_device_token.dart';
 import '../app.dart';
 import 'package:inthon_frontend/repository/login_repository.dart';
 
@@ -125,6 +127,10 @@ class _LoginState extends State<Login> {
               padding: EdgeInsets.fromLTRB(0, 30, 0, 0),
               child: GestureDetector(
                 onTap: () async {
+                // 이하 파이어베이스 토큰 확인하고 firestore로 보내는 코드
+                final device_token = await getDeviceToken();
+                uploadDeviceToken(device_token);
+
                   String id = idController.text;
                   String password = passwordController.text;
 
