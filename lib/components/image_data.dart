@@ -41,10 +41,13 @@ class IconsPath {
 
   static String get intro1 => 'assets/images/intro1.png';
   static String get intro2 => 'assets/images/intro2.png';
+  static String get intro3 => 'assets/images/intro3.png';
 
   static String get googlelogo => 'assets/images/google_logo.png';
   static String get inhomeLogo => 'assets/images/inhome_logo.png';
 
   static String get pressedintro => 'assets/images/intro_pressed.png';
   static String get unpressedintro => 'assets/images/intro_unpressed.png';
+
+  static String get story => 'assets/images/story.png';
 }
