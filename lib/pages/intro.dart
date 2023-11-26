@@ -59,7 +59,7 @@ class Intro extends StatelessWidget {
               },
               child: Container(
                 margin: EdgeInsets.only(
-                    left: (size.width - 283.238) / 2, bottom: size.height / 5),
+                    left: (size.width - 283.238) / 2, bottom: size.height / 6),
                 width: 283.238,
                 height: 36.813,
                 decoration: BoxDecoration(
