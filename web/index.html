@@ -42,16 +42,18 @@
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", function () {
-          navigator.serviceWorker.register("/firebase-messaging-sw.js").then(
-            function (registration) {
-              // 등록 성공
-              console.log("Service Worker 등록 성공:", registration.scope);
-            },
-            function (err) {
-              // 등록 실패
-              console.log("Service Worker 등록 실패:", err);
-            }
-          );
+          navigator.serviceWorker
+            .register("/inthon-frontend/firebase-messaging-sw.js")
+            .then(
+              function (registration) {
+                // 등록 성공
+                console.log("Service Worker 등록 성공:", registration.scope);
+              },
+              function (err) {
+                // 등록 실패
+                console.log("Service Worker 등록 실패:", err);
+              }
+            );
         });
       }
     </script>
