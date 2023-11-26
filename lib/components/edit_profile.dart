@@ -1,7 +1,10 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import './image_data.dart';
 import 'package:inthon_frontend/repository/profile_repository.dart';
+import '../app.dart';
 
 class EditDialog extends StatefulWidget {
   @override
@@ -10,6 +13,14 @@ class EditDialog extends StatefulWidget {
 
 class _EditDialogState extends State<EditDialog> {
   Map<String, dynamic> userProfile = {}; // 사용자 프로필 데이터를 저장할 변수
+  bool isEditingName = false;
+  String _displayText = "";
+  bool isEditingMessage = false;
+  String _displayMessage = "";
+
+  final TextEditingController _textEditingController = TextEditingController();
+  final TextEditingController _statusEditingController =
+      TextEditingController();
 
   @override
   void initState() {
@@ -19,8 +30,13 @@ class _EditDialogState extends State<EditDialog> {
 
   Future<void> _fetchProfile() async {
     try {
-      userProfile = await fetchMyProfile(); // 서버에서 사용자 프로필 데이터를 가져옵니다.
-      setState(() {}); // 상태 업데이트
+      userProfile = await fetchMyProfile();
+      setState(() {
+        if (userProfile.containsKey("nickName")) {
+          _displayText = userProfile["nickName"];
+          _displayMessage = userProfile["statusText"];
+        }
+      }); // 상태 업데이트
     } catch (e) {
       print('Error fetching profile: $e');
     }
@@ -35,14 +51,27 @@ class _EditDialogState extends State<EditDialog> {
       contentPadding: EdgeInsets.zero,
       content: Container(
         width: 339,
-        height: 507,
+        height: 607,
         decoration: BoxDecoration(
           color: Color(0xffffffff),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
           children: [
-            SizedBox(height: 16),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => App()),
+                );
+              },
+              child: Text(
+                "Save",
+                style: TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
             Text(
               "My Profile",
               style: TextStyle(
@@ -50,7 +79,7 @@ class _EditDialogState extends State<EditDialog> {
                 fontWeight: FontWeight.w700,
               ),
             ),
-            SizedBox(height: 27.75),
+            SizedBox(height: 5),
             Stack(
               children: <Widget>[
                 Container(
@@ -70,20 +99,20 @@ class _EditDialogState extends State<EditDialog> {
                     ],
                   ),
                 ),
-                Positioned(
+                /*Positioned(
                   top: 10.25,
                   left: 10,
                   child: ClipOval(
                     child: Container(
-                      width: 136,
-                      height: 136,
-                      /*child: Image.network(
-                        //userProfile['imagePath'] ?? '',
-                        fit: BoxFit.cover, // 이미지가 컨테이너를 완전히 채우도록 조정
-                      ),*/
+                      width: 165,
+                      height: 159.844,
+                      child: Image.network(
+                        userProfile['imagePath'] ?? '',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                ),
+                ),*/
                 Positioned(
                   top: 120,
                   left: 120,
@@ -95,8 +124,8 @@ class _EditDialogState extends State<EditDialog> {
                       color: Color(0xfff3f3f3),
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Color(0xffffffff), // 테두리 색상
-                        width: 1.0, // 테두리 두께
+                        color: Color(0xffffffff),
+                        width: 1.0,
                       ),
                       boxShadow: [
                         BoxShadow(
@@ -131,21 +160,34 @@ class _EditDialogState extends State<EditDialog> {
               ),
               child: Row(
                 children: [
-                  Text(
-                    "ID",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
+                  Container(
+                    width: 70,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          width: 1.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      "ID",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                  Text("|"),
-                  Text(
-                    "userId",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
+                  Padding(
+                    padding: EdgeInsets.only(left: 10),
+                    child: Text(
+                      userProfile["id"] ?? '',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                      ),
                     ),
                   ),
                 ],
@@ -164,30 +206,81 @@ class _EditDialogState extends State<EditDialog> {
               ),
               child: Row(
                 children: [
-                  Text(
-                    "이름",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
+                  Container(
+                    width: 70,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        right: BorderSide(
+                          width: 1.0,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ),
+                    child: Text(
+                      "이름",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                  Text("|"),
-                  Text(
-                    "이름",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
+                  isEditingName
+                      ? Container(
+                          width: 150,
+                          child: TextField(
+                              controller: _textEditingController,
+                              onEditingComplete: () async {
+                                String newName = _textEditingController.text;
+                                try {
+                                  await updateName(newName);
+                                  setState(() {
+                                    isEditingName = false;
+                                    _displayText = newName;
+                                  });
+                                } catch (e) {}
+                              },
+
+                              //textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                contentPadding: EdgeInsets.only(left: 10.0),
+                                /*enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xffe1e1e1), width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xffe1e1e1), width: 2),
+                                ),*/
+                              )))
+                      : Container(
+                          padding: EdgeInsets.only(left: 10),
+                          width: 150,
+                          child: Text(
+                            _displayText,
+                            //userProfile["nickName"] ?? '',
+                            //textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                  IconButton(
+                    icon: ImageData(IconsPath.pencil, isSvg: true, width: 22),
+                    onPressed: () {
+                      setState(() {
+                        isEditingName = !isEditingName;
+                      });
+                    },
+                  )
                 ],
               ),
             ),
             SizedBox(height: 7.1),
             Container(
               width: 280,
-              height: 76,
+              height: 150,
               decoration: BoxDecoration(
                 border: Border.all(
                   width: 1,
@@ -195,26 +288,75 @@ class _EditDialogState extends State<EditDialog> {
                 ),
                 borderRadius: BorderRadius.circular(10.0),
               ),
-              child: Row(
-                children: [
-                  Text(
-                    "상태메시지",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w700,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "상태메시지",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        IconButton(
+                          icon: ImageData(IconsPath.pencil,
+                              isSvg: true, width: 22),
+                          onPressed: () {
+                            setState(() {
+                              isEditingMessage = !isEditingMessage;
+                            });
+                          },
+                        ),
+                      ],
                     ),
-                  ),
-                  Text("|"),
-                  Text(
-                    "abc",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ],
+                    isEditingMessage
+                        ? Container(
+                            width: 250,
+                            child: TextField(
+                                controller: _statusEditingController,
+                                onEditingComplete: () async {
+                                  String newMessage =
+                                      _statusEditingController.text;
+                                  try {
+                                    await updateStatusText(newMessage);
+                                    setState(() {
+                                      isEditingMessage = false;
+                                      _displayMessage = newMessage;
+                                    });
+                                  } catch (e) {}
+                                },
+                                //textAlign: TextAlign.center,
+                                maxLength: 20,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(left: 10.0),
+                                  /*enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xffe1e1e1), width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xffe1e1e1), width: 2),
+                                ),*/
+                                )))
+                        : Container(
+                            padding: EdgeInsets.only(left: 10),
+                            width: 150,
+                            child: Text(
+                              _displayMessage,
+                              style: TextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                  ],
+                ),
               ),
             ),
           ],
