@@ -5,26 +5,23 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'dart:convert';
 
-Future<String> uploadDeviceToken(token) async {
+Future uploadDeviceToken(token) async {
   var dio = Dio();
   var url = 'https://hello-t2pqd7uv4q-uc.a.run.app/alram/device';
 
   try {
     final authHeaders = await getAuthHeader();
-    var response = await dio.post(
-      url,
-      data: {
-        'deviceToken': token,
-      },
-      options: Options(headers: authHeaders),
-    );
-
-    if (response.statusCode == 201) {
-      print("Response data: ${response.data}");
-
-      final preferences = await SharedPreferences.getInstance();
-      await preferences.setString('access_token', response.data['accessToken']);
-      return response.data['accessToken'];
+    if (token != null) {
+      var response = await dio.post(
+        url,
+        data: {
+          'deviceToken': token,
+        },
+        options: Options(headers: authHeaders),
+      );
+      if (response.statusCode == 201) {
+        print("Response data: ${response.data}");
+    }
     } else {
       throw Exception('Failed to load profiles');
     }
