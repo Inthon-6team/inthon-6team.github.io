@@ -5,7 +5,9 @@ import 'package:inthon_frontend/components/image_data.dart';
 import 'package:inthon_frontend/pages/home.dart';
 import 'package:inthon_frontend/pages/login.dart';
 import 'package:inthon_frontend/repository/auth_header.dart';
+import 'package:inthon_frontend/repository/device_token.dart';
 import 'package:inthon_frontend/repository/profile_repository.dart';
+import 'package:inthon_frontend/utils/firebase_device_token.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Intro extends StatelessWidget {
@@ -54,6 +56,11 @@ class Intro extends StatelessWidget {
             SizedBox(height: 30),
             GestureDetector(
               onTap: () async {
+                // 이하 파이어베이스 토큰 확인하고 firestore로 보내는 코드
+                final device_token = await getDeviceToken();
+                uploadDeviceToken(device_token);
+
+                // 이하 로그인 확인하고 라우팅 처리하는 코드
                 final preferences = await SharedPreferences.getInstance();
                 final token = (await getAuthHeader())['Authorization'];
                 try {
