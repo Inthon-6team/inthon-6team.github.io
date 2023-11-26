@@ -44,7 +44,7 @@ class _ProfileState extends State<Profile> {
               width: 139,
               height: 76,
             ),
-            GestureDetector(
+            /*GestureDetector(
               onTap: () async {
                 // fetchMyProfile에서 받아온 데이터에서 userId를 가져오기
                 var data = await fetchMyProfile();
@@ -59,26 +59,25 @@ class _ProfileState extends State<Profile> {
                   print("다른 사용자의 프로필은 수정할 수 없습니다.");
                   // TODO: 다른 사용자의 프로필은 수정할 수 없다는 알림창 띄우기
                 }
-              },
+              },*/
+            Container(
+              width: 139,
+              height: 66,
+              decoration: BoxDecoration(
+                color: Color(0xfff3f3f3),
+                borderRadius: BorderRadius.circular(20.0),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 4,
+                    offset: Offset(0, 4),
+                  ),
+                ],
+              ),
               child: Container(
-                width: 139,
-                height: 66,
-                decoration: BoxDecoration(
-                  color: Color(0xfff3f3f3),
-                  borderRadius: BorderRadius.circular(20.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.25),
-                      spreadRadius: 0,
-                      blurRadius: 4,
-                      offset: Offset(0, 4),
-                    ),
-                  ],
-                ),
-                child: Container(
-                  //padding: EdgeInsets.only(top: 17, left: 7.0),
-                  child: isEditing ? buildTextField() : buildText(),
-                ),
+                //padding: EdgeInsets.only(top: 17, left: 7.0),
+                child: isEditing ? buildTextField() : buildText(),
               ),
             ),
             Positioned(
@@ -187,32 +186,9 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
             ),
-
-            /*child: ClipOval(
-                  child: Container(
-                    width: 148.47,
-                    height: 148.47,
-                    decoration: BoxDecoration(
-                      color: Color(0xffe2eee0),
-                    ),
-                    child: Stack(
-                      children: [
-                        Positioned(
-                          top: 24,
-                          child: Container(
-                              width: 136,
-                              height: 136,
-                              child: ImageData(
-                                IconsPath.family1,
-                              )),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),*/
           ],
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 5),
         Expanded(
           child: Text(
             widget.nickName,
